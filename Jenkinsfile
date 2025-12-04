@@ -1,28 +1,30 @@
 pipeline {
-
-	agent any
-	tools {
-		maven 'm360'
-	}
-
-	stages {
-	  stage('build') {
-		steps {
-		  sh 'mvn install -DskipTests'
-		}
-	  }
-
-	  stage('test') {
-		steps {
-		  sh 'mvn test'
-		  
-		  post {
-				archiveArtifacts artifacts: 'target/**.jar', followSymlinks: false
-				junit stdioRetention: '', testResults: 'target/surefire-reports/*.xml'
-			}
-		}
-	  }
-
-}
-
+  agent any
+  stages { 
+   stage('clone project 1') {
+      steps {
+           git branch:'master' , url:'https://github.com/monisha166/sBoot.git'
+       }
+   }
+   stage('clean project test') {
+      steps {
+           sh 'mvn clean'
+       }
+   }
+   stage('compile') {
+      steps {
+           sh 'mvn compile'
+       }
+   }
+   stage('test') {
+      steps {
+           sh 'mvn test'
+       }
+   }
+   stage('build') {
+      steps {
+           sh 'mvn clean install'
+       }
+   }
+  }
 }
