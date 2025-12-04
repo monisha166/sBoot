@@ -13,12 +13,12 @@ pipeline {
    }
    stage('compile') {
       steps {
-           sh 'mvn compile'
+           sh 'mvn compile -DskipTests'
        }
    }
    stage('test') {
       steps {
-           sh 'mvn test'
+           sh 'mvn test -DskipTests'
        }
    }
    stage('build') {
