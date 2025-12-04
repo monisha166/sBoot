@@ -14,7 +14,7 @@
                 <artifactId>spring-boot-starter-parent</artifactId>
                 <version>3.11.0</version>
         </parent>
-
+<!--
 <repositories>
 	<repository>
 	  <id>Test</id>
@@ -40,7 +40,7 @@
 	  </snapshots>
 	</repository>
 </distributionManagement>
-
+-->
 
         <properties>
                 <java.version>17</java.version>
