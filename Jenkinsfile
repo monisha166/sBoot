@@ -1,30 +1,38 @@
 pipeline {
   agent any
-  stages { 
-   stage('clone project 1') {
+
+  stages {
+   
+   stage('clone project test23') {
       steps {
            git branch:'master' , url:'https://github.com/monisha166/sBoot.git'
        }
    }
+
    stage('clean project test') {
       steps {
            sh 'mvn clean'
        }
    }
+
    stage('compile') {
       steps {
-           sh 'mvn compile -DskipTests'
+           sh 'mvn compile'
        }
    }
+
    stage('test') {
       steps {
-           sh 'mvn test -DskipTests'
+           sh 'mvn test'
        }
    }
+
    stage('build') {
       steps {
-           sh 'mvn clean install -DskipTests'
+           sh 'mvn clean install'
        }
    }
+
+
   }
 }
